@@ -191,5 +191,7 @@ python3 -m http.server 5500
 - ⚠️ Realiza sincronizaciones periódicas con Drive — si borras la caché del navegador, perderás los datos locales
 
 ---
+## Prueba la web en vivo:
+[🌐 Probar Aplicación en Vivo](https://sebas-finanzass.vercel.app/)
 
 *Proyecto desarrollado por Sebas — Finanzas personales con IA, privacidad y cifrado de grado bancario.*
