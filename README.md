@@ -179,6 +179,12 @@ SebasFinanzas/
 
 ---
 
+  <img width="1354" height="681" alt="image" src="https://github.com/user-attachments/assets/37e41836-d1f4-4780-8653-ad636982c545" />
+  
+- **[🌐 Probar Aplicación en Vivo](https://sebas-finanzass.vercel.app/)**
+
+---
+
 ## 📝 Privacidad
 
 - **Client-Side First:** Tus datos financieros nunca pasan por nuestros servidores
