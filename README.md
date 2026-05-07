@@ -177,12 +177,6 @@ SebasFinanzas/
 3. Activa la **sincronización automática** para mantener tus datos al día
 4. Para restaurar en otro dispositivo, usa **"Restaurar desde Drive"**
 
-### 4. Desarrollo local
-```bash
-python3 -m http.server 5500
-# Abrir http://localhost:5500
-```
-
 ---
 
 ## 📝 Privacidad
