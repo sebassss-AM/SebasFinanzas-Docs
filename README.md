@@ -63,13 +63,13 @@ SebasFinanzas implementa múltiples capas de seguridad que superan el estándar 
 ### Protección Web
 | Capa | Detalle |
 |---|---|
-| **CSP (Content Security Policy)** | Sin `unsafe-inline` en scripts — bloquea inyección de código XSS |
-| **HSTS** | Fuerza HTTPS en toda comunicación |
-| **X-Frame-Options: DENY** | Impide que tu app sea embebida en iframes maliciosos |
-| **X-Content-Type-Options: nosniff** | Previene sniffing de MIME type |
-| **Referrer-Policy** | Controla qué información se envía al navegar |
-| **Sanitización HTML** | Todos los datos del usuario se sanitizan antes de renderizarse |
-| **Protección CSV Injection** | Exportación segura que previene inyección de fórmulas en Excel |
+| **CSP (Content Security Policy)** | Hardened (sin CDNs externos para scripts/estilos) | Bloquea inyección de código y dependencias no autorizadas |
+| **HSTS** | Fuerza HTTPS en toda comunicación | Previene ataques de degradación de protocolo |
+| **X-Frame-Options: DENY** | Impide que tu app sea embebida en iframes maliciosos | Evita ataques de Clickjacking |
+| **X-Content-Type-Options: nosniff** | Previene sniffing de MIME type | Asegura que el navegador respete los tipos de archivo declarados |
+| **Referrer-Policy** | strict-origin-when-cross-origin | Minimiza la fuga de información al navegar a sitios externos |
+| **Sanitización HTML** | Todos los datos del usuario se sanitizan antes de renderizarse | Defensa contra XSS persistente |
+| **Protección CSV Injection** | Exportación segura que previene inyección de fórmulas en Excel | Evita ejecución de macros maliciosas al abrir reportes |
 
 ### Protección de Sesión
 | Mecanismo | Detalle |
@@ -100,10 +100,12 @@ SebasFinanzas/
 │   ├── components.css          # Botones, cards, inputs
 │   ├── chat.css                # Interfaz del agente IA
 │   ├── auth.css                # Pantalla de login
-│   └── feedback.css            # Toasts, modales
+│   ├── feedback.css            # Toasts, modales
+│   └── lib/                    # Librerías CSS locales (Phosphor Icons, etc.)
 ├── js/
 │   ├── config.js               # Configuración (gitignored)
 │   ├── main.js                 # Entry point, routing, inicialización
+│   ├── lib/                    # Librerías JS locales (Chart.js, etc.)
 │   ├── services/               # Lógica de negocio (sin UI)
 │   │   ├── database.js         # IndexedDB, crypto, sesiones, cache
 │   │   ├── authService.js      # Registro, login, brute-force protection
@@ -144,14 +146,15 @@ SebasFinanzas/
 | Categoría | Tecnología |
 |---|---|
 | **Frontend** | HTML5, CSS3 (Vanilla), JavaScript ES6+ Modules |
-| **Gráficos** | Chart.js |
+| **Gráficos** | Chart.js (Alojado localmente) |
 | **Criptografía** | Web Crypto API (AES-256-GCM, PBKDF2, SHA-256) |
 | **Base de datos** | IndexedDB (principal) + LocalStorage (fallback) |
-| **IA** | Groq API (Llama 3.1) |
+| **IA** | Groq API (Llama 3.3) |
 | **Nube** | Google Drive API (scope: appdata) |
 | **PWA** | Service Workers, Web App Manifest |
 | **Deploy** | Vercel (headers de seguridad) |
-| **Iconos** | Phosphor Icons |
+| **Iconos** | Phosphor Icons (Alojado localmente) |
+| **Tailwind CSS** | Compilado localmente (sin dependencias de CDN) |
 | **Tipografía** | Inter + Outfit (Google Fonts) |
 
 ---
@@ -191,7 +194,5 @@ python3 -m http.server 5500
 - ⚠️ Realiza sincronizaciones periódicas con Drive — si borras la caché del navegador, perderás los datos locales
 
 ---
-## Prueba la web en vivo:
-[🌐 Probar Aplicación en Vivo](https://sebas-finanzass.vercel.app/)
 
 *Proyecto desarrollado por Sebas — Finanzas personales con IA, privacidad y cifrado de grado bancario.*
